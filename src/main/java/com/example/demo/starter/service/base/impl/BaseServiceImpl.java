@@ -11,6 +11,7 @@ import com.example.demo.starter.util.response.ServiceResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -37,9 +38,11 @@ public abstract class BaseServiceImpl<T extends BaseEntity, D extends BaseDto> i
     }
 
     public ServiceResponse<D> getSingle(Predicate<T> predicate) {
-        T entity = repository.findAll().stream().filter(predicate)
-                .findFirst().orElseThrow(() -> new NotFoundException("Not Found"));
-        return ServiceResponse.success(mapper.toDto(entity), 200);
+        return repository.findAll().stream()
+                .filter(predicate)
+                .findFirst()
+                .map(entity -> ServiceResponse.success(mapper.toDto(entity), 200))
+                .orElseThrow(() -> new NotFoundException("Not Found"));
     }
 
     public ServiceResponse<D> create(D dto) {
@@ -57,7 +60,8 @@ public abstract class BaseServiceImpl<T extends BaseEntity, D extends BaseDto> i
 
     public ServiceResponse<NoContent> delete(UUID id) {
         T entity = repository.findById(id).orElseThrow(() -> new NotFoundException("Not found"));
-        repository.delete(entity);
+        entity.setDeleted(true);
+        repository.save(entity);
         return ServiceResponse.success(204);
     }
 

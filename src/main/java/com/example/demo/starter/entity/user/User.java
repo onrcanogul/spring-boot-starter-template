@@ -1,4 +1,4 @@
-package com.example.demo.starter.entity.product;
+package com.example.demo.starter.entity.user;
 
 import com.example.demo.starter.entity.base.BaseEntity;
 import jakarta.persistence.Entity;
@@ -12,10 +12,10 @@ import org.hibernate.annotations.Where;
 @Entity
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
-@Table(name = "products")
+@Table(name = "users")
 @Where(clause = "is_deleted = false")
-public class Product extends BaseEntity {
-    private String name;
-    private String description;
-    private double price;
+public class User extends BaseEntity {
+    private String username;
+    private String email;
+    private String password;
 }

@@ -12,8 +12,8 @@ import java.util.function.Predicate;
 
 @Service
 public interface BaseService<T extends BaseEntity, D extends BaseDto> {
-    public ServiceResponse<List<D>> get(int page, int size, Predicate<T> predicate);
-    public ServiceResponse<D> getSingle(Predicate<T> predicate);
+    public ServiceResponse<List<D>> get();
+    public ServiceResponse<D> getSingle(UUID id);
     public ServiceResponse<D> create(D dto);
     public ServiceResponse<D> update(D dto, UUID id);
     public ServiceResponse<NoContent> delete(UUID id);

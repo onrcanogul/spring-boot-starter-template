@@ -23,14 +23,14 @@ public class ProductController extends BaseController {
 
     @GetMapping
     @Operation(summary = "Get All Products", description = "Get All Products")
-    public ResponseEntity<ServiceResponse<List<ProductDto>>> get(int page, int size) {
-        return controllerResponse(service.get(page, size, null));
+    public ResponseEntity<ServiceResponse<List<ProductDto>>> get() {
+        return controllerResponse(service.get());
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "Get Product By Id", description = "Get Product By Id")
     public ResponseEntity<ServiceResponse<ProductDto>> get(@PathVariable UUID id) {
-        return controllerResponse(service.getSingle(p -> Objects.equals(p.getId(), id)));
+        return controllerResponse(service.getSingle(id));
     }
 
     @PostMapping

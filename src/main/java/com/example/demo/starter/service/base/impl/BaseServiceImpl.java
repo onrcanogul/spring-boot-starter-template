@@ -25,23 +25,12 @@ public abstract class BaseServiceImpl<T extends BaseEntity, D extends BaseDto> i
         this.mapper = mapper;
     }
 
-    public ServiceResponse<List<D>> get(int page , int size, Predicate<T> predicate) {
-        Stream<T> entityStream = repository.findAll().stream();
-        if(predicate != null) {
-            entityStream = entityStream.filter(predicate);
-        }
-        if(page != 0 && size != 0) {
-            entityStream = entityStream.skip((long) page * size).limit(size);
-        }
-        return ServiceResponse.success(entityStream.map(mapper::toDto).collect(Collectors.toList()), 200);
+    public ServiceResponse<List<D>> get() {
+        return ServiceResponse.success(repository.findAll().stream().map(mapper::toDto).collect(Collectors.toList()), 200);
     }
 
-    public ServiceResponse<D> getSingle(Predicate<T> predicate) {
-        return repository.findAll().stream()
-                .filter(predicate)
-                .findFirst()
-                .map(entity -> ServiceResponse.success(mapper.toDto(entity), 200))
-                .orElseThrow(() -> new NotFoundException("Not Found"));
+    public ServiceResponse<D> getSingle(UUID id) {
+        return ServiceResponse.success(mapper.toDto(repository.findById(id).orElseThrow(() -> new NotFoundException("Not Found"))), 200);
     }
 
     public ServiceResponse<D> create(D dto) {

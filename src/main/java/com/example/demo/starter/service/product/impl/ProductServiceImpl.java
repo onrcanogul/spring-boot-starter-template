@@ -9,8 +9,8 @@ import com.example.demo.starter.service.product.ProductService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ProjectServiceImpl extends BaseServiceImpl<Product, ProductDto> implements ProductService {
-    public ProjectServiceImpl(ProductRepository repository, Mapper<Product, ProductDto> mapper) {
+public class ProductServiceImpl extends BaseServiceImpl<Product, ProductDto> implements ProductService {
+    public ProductServiceImpl(ProductRepository repository, Mapper<Product, ProductDto> mapper) {
         super(repository, mapper);
     }
 

@@ -18,6 +18,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class AuthServiceImpl implements AuthService {
     private final UserRepository userRepository;
@@ -51,6 +54,7 @@ public class AuthServiceImpl implements AuthService {
         }
 
         User user = new User();
+        user.setRoles(List.of("USER"));
         user.setUsername(request.getUsername());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         userRepository.save(user);

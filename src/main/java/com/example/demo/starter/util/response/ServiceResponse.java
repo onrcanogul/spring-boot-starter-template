@@ -49,8 +49,8 @@ public class ServiceResponse<T> {
         return response;
     }
 
-    public static ServiceResponse<NoContent> success(int statusCode) {
-        ServiceResponse<NoContent> response = new ServiceResponse<>();
+    public static ServiceResponse success(int statusCode) {
+        ServiceResponse response = new ServiceResponse<>();
         response.setStatusCode(statusCode);
         response.setSuccessful(true);
         return response;

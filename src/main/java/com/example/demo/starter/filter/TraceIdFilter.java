@@ -16,15 +16,14 @@ public class TraceIdFilter extends OncePerRequestFilter {
     public static final String traceIdKey = "traceId";
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        String traceId = UUID.randomUUID().toString();
+        String traceId = request.getHeader("X-Trace-Id");
+        if (traceId == null) traceId = UUID.randomUUID().toString();
         MDC.put(traceIdKey, traceId);
-        response.addHeader("X-Trace-Id", traceId);
-
+        response.setHeader("X-Trace-Id", traceId);
         try {
             filterChain.doFilter(request, response);
-        }
-        finally {
-            MDC.remove(traceIdKey); // remove when request end
+        } finally {
+            MDC.remove(traceIdKey);
         }
     }
 }

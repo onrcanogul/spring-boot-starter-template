@@ -1,58 +1,36 @@
 package com.example.demo.starter.util.response;
 
+import lombok.Getter;
+import lombok.Setter;
+import org.slf4j.MDC;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter @Setter
 public class ServiceResponse<T> {
     private T data;
     private List<String> errors;
     private int statusCode;
     private boolean isSuccessful;
+    private String traceId;
 
-    public T getData() {
-        return data;
-    }
-
-    public void setData(T data) {
-        this.data = data;
-    }
-
-    public List<String> getErrors() {
-        return errors;
-    }
-
-    public void setErrors(List<String> errors) {
-        this.errors = errors;
-    }
-
-    public int getStatusCode() {
-        return statusCode;
-    }
-
-    public void setStatusCode(int statusCode) {
-        this.statusCode = statusCode;
-    }
-
-    public boolean isSuccessful() {
-        return isSuccessful;
-    }
-
-    public void setSuccessful(boolean successful) {
-        isSuccessful = successful;
-    }
-
+    // Success response with data
     public static <T> ServiceResponse<T> success(T data, int statusCode) {
         ServiceResponse<T> response = new ServiceResponse<>();
         response.setData(data);
         response.setStatusCode(statusCode);
         response.setSuccessful(true);
+        response.setTraceId(MDC.get("traceId"));
         return response;
     }
 
-    public static ServiceResponse success(int statusCode) {
-        ServiceResponse response = new ServiceResponse<>();
+    // Success response without data
+    public static ServiceResponse<NoContent> success(int statusCode) {
+        ServiceResponse<NoContent> response = new ServiceResponse<>();
         response.setStatusCode(statusCode);
         response.setSuccessful(true);
+        response.setTraceId(MDC.get("traceId"));
         return response;
     }
 
@@ -61,6 +39,7 @@ public class ServiceResponse<T> {
         response.setErrors(errors);
         response.setStatusCode(statusCode);
         response.setSuccessful(false);
+        response.setTraceId(MDC.get("traceId"));  // ✅ TraceId otomatik ekleniyor
         return response;
     }
 
@@ -71,7 +50,7 @@ public class ServiceResponse<T> {
         response.setErrors(errorList);
         response.setStatusCode(statusCode);
         response.setSuccessful(false);
+        response.setTraceId(MDC.get("traceId"));  // ✅ TraceId otomatik ekleniyor
         return response;
     }
-
 }

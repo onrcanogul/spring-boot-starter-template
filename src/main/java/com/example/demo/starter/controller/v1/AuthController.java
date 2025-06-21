@@ -1,4 +1,4 @@
-package com.example.demo.starter.controller;
+package com.example.demo.starter.controller.v1;
 
 import com.example.demo.starter.controller.base.BaseController;
 import com.example.demo.starter.dto.user.LoginDto;
@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/api/v1/auth")
 public class AuthController extends BaseController {
     private final AuthService authService;
 

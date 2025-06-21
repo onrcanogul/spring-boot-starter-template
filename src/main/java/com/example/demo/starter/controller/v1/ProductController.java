@@ -1,4 +1,4 @@
-package com.example.demo.starter.controller;
+package com.example.demo.starter.controller.v1;
 
 import com.example.demo.starter.controller.base.BaseController;
 import com.example.demo.starter.dto.product.ProductDto;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/product")
+@RequestMapping("/api/v1/product")
 public class ProductController extends BaseController {
     private final ProductService service;
     public ProductController(ProductService service) {

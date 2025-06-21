@@ -3,7 +3,7 @@ package com.example.demo.starter.service.user;
 
 import com.example.demo.starter.entity.user.User;
 import com.example.demo.starter.exception.types.NotFoundException;
-import com.example.demo.starter.repository.user.UserRepository;
+import com.example.demo.starter.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

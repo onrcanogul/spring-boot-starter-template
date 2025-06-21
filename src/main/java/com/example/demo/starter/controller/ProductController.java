@@ -1,4 +1,4 @@
-package com.example.demo.starter.controller.product;
+package com.example.demo.starter.controller;
 
 import com.example.demo.starter.controller.base.BaseController;
 import com.example.demo.starter.dto.product.ProductDto;
@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.UUID;
 
 @RestController

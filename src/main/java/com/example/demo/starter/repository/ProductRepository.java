@@ -1,7 +1,6 @@
-package com.example.demo.starter.repository.product;
+package com.example.demo.starter.repository;
 
 import com.example.demo.starter.entity.product.Product;
-import com.example.demo.starter.repository.base.BaseRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;

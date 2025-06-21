@@ -3,7 +3,7 @@ package com.example.demo.starter.service.product.impl;
 import com.example.demo.starter.configuration.mapper.Mapper;
 import com.example.demo.starter.dto.product.ProductDto;
 import com.example.demo.starter.entity.product.Product;
-import com.example.demo.starter.repository.product.ProductRepository;
+import com.example.demo.starter.repository.ProductRepository;
 import com.example.demo.starter.service.base.impl.BaseServiceImpl;
 import com.example.demo.starter.service.product.ProductService;
 import org.springframework.stereotype.Service;

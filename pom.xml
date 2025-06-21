@@ -30,6 +30,14 @@
 		</dependency>
 
 
+		<dependency>
+			<groupId>com.bucket4j</groupId>
+			<artifactId>bucket4j-core</artifactId>
+			<version>8.5.0</version>
+		</dependency>
+
+
+
 		<!-- JWT (jjwt) -->
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>

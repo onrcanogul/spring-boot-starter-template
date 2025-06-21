@@ -22,7 +22,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -73,6 +72,7 @@ public class AuthServiceImpl implements AuthService {
         if (refreshTokenEntity.getExpiration().isBefore(LocalDateTime.now())) {
             throw new BadRequestException("RefreshTokenExpired");
         }
+
         UserDetails userDetails = customUserDetailsService.loadUserByUsername(refreshTokenEntity.getUser().getUsername());
         String accessToken = jwtService.generateToken(userDetails);
 

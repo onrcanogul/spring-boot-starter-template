@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class JwtService {
-    @Value("secret-key")
+    @Value("${secret-key}")
     private static String SECRET_KEY;
 
     public String generateToken(UserDetails userDetails) {

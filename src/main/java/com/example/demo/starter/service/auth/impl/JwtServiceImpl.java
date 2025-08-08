@@ -54,25 +54,16 @@ public class JwtServiceImpl implements JwtService {
     }
 
     private Claims extractAllClaims(String token) {
-        return Jwts.parser()
-                .setSigningKey(SECRET_KEY)
-                .parseClaimsJws(token)
-                .getBody();
+        return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
     }
 
-
-
     private boolean isTokenExpired(String token) {
-        Date expiration = Jwts.parser().setSigningKey(SECRET_KEY)
-                .parseClaimsJws(token).getBody().getExpiration();
+        Date expiration = Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody().getExpiration();
         return expiration.before(new Date());
     }
 
     private String createToken(String username, Map<String, Object> claims) {
-        return Jwts.builder()
-                .setSubject(username)
-                .setClaims(claims)
-                .setIssuedAt(new Date())
+        return Jwts.builder().setSubject(username).setClaims(claims).setIssuedAt(new Date())
                 .setExpiration(Date.from(Instant.now().plus(1, ChronoUnit.DAYS)))
                 .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
                 .compact();

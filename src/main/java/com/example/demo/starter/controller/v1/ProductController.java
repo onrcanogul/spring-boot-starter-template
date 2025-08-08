@@ -20,10 +20,10 @@ public class ProductController extends BaseController {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping("/{pageNo}/{pageSize}")
     @Operation(summary = "Get All Products", description = "Get All Products")
-    public ResponseEntity<ServiceResponse<List<ProductDto>>> get() {
-        return controllerResponse(service.get());
+    public ResponseEntity<ServiceResponse<List<ProductDto>>> get(@PathVariable int pageNo, @PathVariable int pageSize) {
+        return controllerResponse(service.get(pageNo, pageSize));
     }
 
     @GetMapping("/{id}")

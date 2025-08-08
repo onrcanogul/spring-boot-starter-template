@@ -8,6 +8,9 @@ import com.example.demo.starter.repository.BaseRepository;
 import com.example.demo.starter.service.base.BaseService;
 import com.example.demo.starter.util.response.NoContent;
 import com.example.demo.starter.util.response.ServiceResponse;
+import org.hibernate.query.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,8 +26,9 @@ public abstract class BaseServiceImpl<T extends BaseEntity, D extends BaseDto> i
         this.mapper = mapper;
     }
 
-    public ServiceResponse<List<D>> get() {
-        return ServiceResponse.success(repository.findAll().stream().map(mapper::toDto).collect(Collectors.toList()), 200);
+    public ServiceResponse<List<D>> get(int pageNo, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNo, pageSize);
+        return ServiceResponse.success(repository.findAll(pageable).stream().map(mapper::toDto).collect(Collectors.toList()), 200);
     }
 
     public ServiceResponse<D> getSingle(UUID id) {

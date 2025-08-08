@@ -1,7 +1,9 @@
 package com.example.demo.starter.configuration.mapper;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Mapper<E, D> implements GenericMapper<E, D> {
     private final ModelMapper modelMapper = new ModelMapper();
     private final Class<E> entityClass;

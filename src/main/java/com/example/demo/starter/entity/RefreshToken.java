@@ -1,6 +1,5 @@
-package com.example.demo.starter.entity.refreshToken;
+package com.example.demo.starter.entity;
 
-import com.example.demo.starter.entity.user.User;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;

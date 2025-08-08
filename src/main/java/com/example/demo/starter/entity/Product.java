@@ -1,4 +1,4 @@
-package com.example.demo.starter.entity.product;
+package com.example.demo.starter.entity;
 
 import com.example.demo.starter.entity.base.BaseEntity;
 import jakarta.persistence.Entity;

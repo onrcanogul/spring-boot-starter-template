@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.function.Predicate;
 
 @Service
 public interface BaseService<T extends BaseEntity, D extends BaseDto> {

@@ -2,10 +2,9 @@ package com.example.demo.starter.controller.v1;
 
 import com.example.demo.starter.controller.base.BaseController;
 import com.example.demo.starter.dto.user.LoginDto;
-import com.example.demo.starter.dto.user.UserDto;
+import com.example.demo.starter.dto.user.RegisterDto;
 import com.example.demo.starter.service.auth.AuthService;
 import com.example.demo.starter.util.response.AuthResponse;
-import com.example.demo.starter.util.response.NoContent;
 import com.example.demo.starter.util.response.ServiceResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +33,7 @@ public class AuthController extends BaseController {
 
     @PostMapping("/register")
     @Operation(summary = "Basic Register", description = "Basic Register")
-    public ResponseEntity<ServiceResponse<NoContent>> register(@RequestBody UserDto model) {
+    public ResponseEntity<ServiceResponse<String>> register(@RequestBody RegisterDto model) {
         return controllerResponse(authService.register(model));
     }
 

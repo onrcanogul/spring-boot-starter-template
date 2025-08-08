@@ -3,7 +3,7 @@ package com.example.demo.starter.service.base.impl;
 import com.example.demo.starter.configuration.mapper.Mapper;
 import com.example.demo.starter.dto.base.BaseDto;
 import com.example.demo.starter.entity.base.BaseEntity;
-import com.example.demo.starter.exception.types.NotFoundException;
+import com.example.demo.starter.exception.NotFoundException;
 import com.example.demo.starter.repository.BaseRepository;
 import com.example.demo.starter.service.base.BaseService;
 import com.example.demo.starter.util.response.NoContent;

@@ -1,9 +1,9 @@
 package com.example.demo.starter.exception.handler;
 
-import com.example.demo.starter.exception.types.BadRequestException;
-import com.example.demo.starter.exception.types.ForbiddenException;
-import com.example.demo.starter.exception.types.NotFoundException;
-import com.example.demo.starter.exception.types.UnauthorizedException;
+import com.example.demo.starter.exception.BadRequestException;
+import com.example.demo.starter.exception.ForbiddenException;
+import com.example.demo.starter.exception.NotFoundException;
+import com.example.demo.starter.exception.UnauthorizedException;
 import com.example.demo.starter.util.response.ServiceResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

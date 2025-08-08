@@ -1,14 +1,14 @@
-package com.example.demo.starter.service.user;
+package com.example.demo.starter.service.auth.impl;
 
 
-import com.example.demo.starter.entity.user.User;
-import com.example.demo.starter.exception.types.NotFoundException;
+import com.example.demo.starter.entity.User;
+import com.example.demo.starter.exception.NotFoundException;
 import com.example.demo.starter.repository.UserRepository;
+import com.example.demo.starter.service.auth.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -16,12 +16,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class CustomUserDetailsService implements UserDetailsService {
+public class CustomUserDetailsServiceImpl implements CustomUserDetailsService {
 
     private final UserRepository userRepository;
 
     @Autowired
-    public CustomUserDetailsService(UserRepository userRepository) {
+    public CustomUserDetailsServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 

@@ -1,9 +1,8 @@
 package com.example.demo.starter.configuration.security;
 
 import com.example.demo.starter.filter.JwtAuthenticationFilter;
-import com.example.demo.starter.service.jwt.JwtService;
-import com.example.demo.starter.service.user.CustomUserDetailsService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.demo.starter.service.auth.JwtService;
+import com.example.demo.starter.service.auth.impl.CustomUserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -23,9 +22,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
     private final JwtService jwtService;
-    private final CustomUserDetailsService userDetailsService;
+    private final CustomUserDetailsServiceImpl userDetailsService;
 
-    public SecurityConfig(JwtService jwtService, CustomUserDetailsService userDetailsService) {
+    public SecurityConfig(JwtService jwtService, CustomUserDetailsServiceImpl userDetailsService) {
         this.jwtService = jwtService;
         this.userDetailsService = userDetailsService;
     }

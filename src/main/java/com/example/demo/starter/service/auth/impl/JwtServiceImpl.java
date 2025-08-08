@@ -1,5 +1,6 @@
-package com.example.demo.starter.service.jwt;
+package com.example.demo.starter.service.auth.impl;
 
+import com.example.demo.starter.service.auth.JwtService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -14,9 +15,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-public class JwtService {
+public class JwtServiceImpl implements JwtService {
     @Value("${secret-key}")
-    private static String SECRET_KEY;
+    private String SECRET_KEY;
 
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
@@ -39,13 +40,6 @@ public class JwtService {
                 !isTokenExpired(token);
     }
 
-    private Claims extractAllClaims(String token) {
-        return Jwts.parser()
-                .setSigningKey(SECRET_KEY)
-                .parseClaimsJws(token)
-                .getBody();
-    }
-
     //We can use user details to get roles
     public List<String> extractRoles(String token) {
         Claims claims = extractAllClaims(token);
@@ -58,6 +52,15 @@ public class JwtService {
         }
         return new ArrayList<>();
     }
+
+    private Claims extractAllClaims(String token) {
+        return Jwts.parser()
+                .setSigningKey(SECRET_KEY)
+                .parseClaimsJws(token)
+                .getBody();
+    }
+
+
 
     private boolean isTokenExpired(String token) {
         Date expiration = Jwts.parser().setSigningKey(SECRET_KEY)

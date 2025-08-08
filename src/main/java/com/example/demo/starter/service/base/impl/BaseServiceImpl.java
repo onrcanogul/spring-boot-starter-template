@@ -8,7 +8,6 @@ import com.example.demo.starter.repository.BaseRepository;
 import com.example.demo.starter.service.base.BaseService;
 import com.example.demo.starter.util.response.NoContent;
 import com.example.demo.starter.util.response.ServiceResponse;
-import org.hibernate.query.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -21,6 +20,7 @@ import java.util.stream.Collectors;
 public abstract class BaseServiceImpl<T extends BaseEntity, D extends BaseDto> implements BaseService<T, D> {
     private final BaseRepository<T> repository;
     private final Mapper<T, D> mapper;
+
     public BaseServiceImpl(BaseRepository<T> repository, Mapper<T, D> mapper) {
         this.repository = repository;
         this.mapper = mapper;
